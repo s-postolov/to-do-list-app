@@ -18,7 +18,28 @@ public class ToDoService{
         return toDoRepository.findAll();
     }
 
-    public ToDo createTodo(ToDo toDo){
-        return toDoRepository.save(toDo);
+    public ToDo findById(Long id){
+        return toDoRepository.findById(id).orElseThrow();
+    }
+
+    public ToDo addTodo(String title, String description, Boolean completed){
+        ToDo todo = new ToDo(title, description, completed);
+        toDoRepository.save(todo);
+        return todo;
+    }
+
+    public ToDo updateTodo(Long id, String title, String description, Boolean completed){
+        ToDo todo = toDoRepository.findById(id).orElseThrow();
+        todo.setTitle(title);
+        todo.setDescription(description);
+        todo.setCompleted(completed);
+        toDoRepository.save(todo);
+        return todo;
+    }
+
+    public ToDo deleteTodo(Long id) {
+        ToDo todo = toDoRepository.findById(id).orElseThrow();
+        toDoRepository.delete(todo);
+        return todo;
     }
 }

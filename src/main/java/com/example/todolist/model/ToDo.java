@@ -17,9 +17,9 @@ public class ToDo {
     private Long id;
     private String title;
     private String description;
-    private Boolean completed;
+    private Boolean completed = false;
 
-    public ToDo(String title, String description, boolean completed) {
+    public ToDo(String title, String description, Boolean completed) {
         this.title = title;
         this.description = description;
         this.completed = completed;
