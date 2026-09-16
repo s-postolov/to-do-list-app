@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>My Todo List</h1>
+    <form method="post">
+        <label for="title" style="display: block; padding-bottom: 5px">
+            Title
+            <input name="title" id="title">
+        </label>
+
+        <label for="description" style="display: block; padding-bottom: 5px">
+            Description
+            <textarea name="description" id="description"></textarea>
+        </label>
+
+        <label for="completed" style="display: block; padding-bottom: 5px">
+            Is it completed?
+            <input type="checkbox" name="completed" id="completed">
+        </label>
+
+        <button type="submit">Add Todo</button>
+    </form>
+
+    <div th:each="todo : ${todos}">
+        <h2 th:text="${todo.title}"></h2>
+        <p th:text="${todo.description}"></p>
+        <p th:text="${todo.completed}"></p>
+    </div>
+</body>
+</html>
